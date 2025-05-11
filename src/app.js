@@ -10,11 +10,7 @@ const app = express()
 
 app.use(bodyParser.json())
 
-app.get("/", (req, res)=>{
-    res.json({"Hi":"Hello World"})
-})
-
-app.use('/api', user)
+app.use('/users', user)
 
 const PORT = 3000
 
