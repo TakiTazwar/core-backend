@@ -14,7 +14,7 @@ app.get("/", (req, res)=>{
     res.json({"Hi":"Hello World"})
 })
 
-app.use('/users', user)
+app.use('/api', user)
 
 const PORT = 3000
 
