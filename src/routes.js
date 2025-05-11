@@ -3,7 +3,7 @@ import { createOrUpdate, deleteUserById, getUserById, readAllUsers } from './db/
 
 const router = express.Router()
 
-router.get('/users', async(req, res) => {
+router.get('/', async(req, res) => {
     const { success, data } = await readAllUsers()
 
     if(success){
@@ -12,7 +12,7 @@ router.get('/users', async(req, res) => {
     return res.status(500).json({success:false, messsage: "Error"})
 })
 
-router.get('/user/:id', async(req, res) => {
+router.get('/:id', async(req, res) => {
     const { id } = req.params
     const { success, data } = await getUserById(id)
     if(success){
@@ -23,7 +23,7 @@ router.get('/user/:id', async(req, res) => {
 })
 
 
-router.post('/user', async(req, res) => {
+router.post('/', async(req, res) => {
     const { success, data } = await createOrUpdate(req.body)
 
     if(success){
@@ -34,7 +34,7 @@ router.post('/user', async(req, res) => {
 })
 
 
-router.put('/user/:id', async(req, res) => {
+router.put('/:id', async(req, res) => {
     const user = req.body
     const { id } = req.params
     user.id = parseInt(id)
@@ -49,7 +49,7 @@ router.put('/user/:id', async(req, res) => {
 })
 
 
-router.delete('/user/:id', async (req, res) => {
+router.delete('/:id', async (req, res) => {
     const { id } = req.params
     const { success, data } = await deleteUserById(id)
     if (success) {
