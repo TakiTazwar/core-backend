@@ -12,7 +12,7 @@ app.use(bodyParser.json())
 
 app.use('/api', user)
 
-const PORT = 3000
+const PORT = 8000
 
 app.listen(PORT, () => {
     console.log(`Port listening on ${PORT}`)
