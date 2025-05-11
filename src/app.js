@@ -1,11 +1,23 @@
-import express from 'express';
-const app = express();
-const port = 3000;
+import express from 'express'
+import bodyParser from 'body-parser'
+import dotenv from 'dotenv'
 
-app.get('/', (req, res) => {
-  res.send('Hello World!');
-});
+import user from './routes.js'
 
-app.listen(port, () => {
-  return console.log(`Express is listening at http://localhost:${port}`);
-});
+dotenv.config()
+
+const app = express()
+
+app.use(bodyParser.json())
+
+app.get("/", (req, res)=>{
+    res.json({"Hi":"Hello World"})
+})
+
+app.use('/api', user)
+
+const PORT = 3000
+
+app.listen(PORT, () => {
+    console.log(`Port listening on ${PORT}`)
+})
