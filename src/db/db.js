@@ -30,7 +30,7 @@ const readAllUsers = async()=>{
     {
         const command = new ScanCommand(params);
         const result = await db.send(command);
-        return { success: true, data: result }
+        return { success: true, data: unmarshall(result.Items) }
     } 
     catch (error) 
     {
