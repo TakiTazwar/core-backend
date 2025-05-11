@@ -14,7 +14,7 @@ const createOrUpdate = async (data = {}) =>{
         const command = new PutItemCommand(params);
         const result = await db.send(command);
         return { success: true, data: result }
-    } 
+    }
     catch (error) 
     {
         console.error('Error inserting item:', error);
@@ -44,8 +44,6 @@ const getUserById = async (value, key = 'id') => {
         TableName: Table,
         Key: marshall({ [key]: value })
       };
-      console.log('params', params)
-    
       try {
         const command = new GetItemCommand(params);
         const result = await db.send(command);
@@ -70,7 +68,6 @@ const deleteUserById = async(value, key = 'id' ) => {
     try {
         const command = new DeleteItemCommand(params);
         const result = await db.send(command);
-        console.log('Item deleted:', result);
         return { success: true, data: result }
     } 
     catch (error) {

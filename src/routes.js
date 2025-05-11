@@ -15,7 +15,6 @@ router.get('/users', async(req, res) => {
 router.get('/user/:id', async(req, res) => {
     const { id } = req.params
     const { success, data } = await getUserById(id)
-    console.log(data)
     if(success){
         return res.json({success, data})
     }
